@@ -3,7 +3,7 @@
 
 
 
---使用方法
+--使用方法 用openresty实现阿里短信发送的功能
 
 local args, err = ngx.req.get_uri_args()
 
@@ -18,7 +18,7 @@ s:send('13911111111','123456')
 
 
 
---腾讯im的usersig
+--腾讯im的usersig  用openresty实现腾讯im的签名功能
 
 
 local imUserSig = require "UserSig"
