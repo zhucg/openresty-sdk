@@ -6,20 +6,36 @@
 --使用方法
 
 local args, err = ngx.req.get_uri_args()
+
+
 local sms = require "aliSendMms"
+
+
 local s = sms:new()
+
+
 s:send('13911111111','123456')
 
 
 
 --腾讯im的usersig
+
+
 local imUserSig = require "UserSig"
+
+
 local privateKey = [[-----BEGIN PRIVATE KEY-----
+
 ************************************************
+
 ************************************************
+
 ************************************************
+
 -----END PRIVATE KEY-----]]
+
 local imObj = imUserSig:new({appid='12345678', privateKey=privateKey})
 
 local sig = imObj:genSign('uid')
+
 ngx.say(sig)
