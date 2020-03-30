@@ -6,12 +6,14 @@
 --使用方法
 
 local args, err = ngx.req.get_uri_args()
-local sms = require "sendSms"
+local sms = require "aliSendMms"
 local s = sms:new()
 s:send('13911111111','123456')
 
+
+
 --腾讯im的usersig
-local imUserSig = require "imUserSig"
+local imUserSig = require "UserSig"
 local privateKey = [[-----BEGIN PRIVATE KEY-----
 ************************************************
 ************************************************
