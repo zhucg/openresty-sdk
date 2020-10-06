@@ -63,6 +63,18 @@ make && make install
 编译后，将zlib.so复制到/opt/openresty/lualib/
 
 
+
+
+local zlib = require "zlib"
+local test_string = 'abcdefg'
+local deflated = zlib.deflate()(test_string, "finish")
+--ngx.say(tostring(deflated))
+local stream = zlib.inflate()
+local r=stream(deflated);
+ngx.say(r)
+
+
+
 在openresty实现bit操作
 
 http://bitop.luajit.org/
@@ -85,12 +97,3 @@ make
 bitop应该是个c扩展模块，需要编译安装
 安装需要lua.h文件，我们使用的是openresty，默认安装的是luajit，所以需要修改MakeFile文件中的包含路径
 
-
-
-local zlib = require "zlib"
-local test_string = 'abcdefg'
-local deflated = zlib.deflate()(test_string, "finish")
---ngx.say(tostring(deflated))
-local stream = zlib.inflate()
-local r=stream(deflated);
-ngx.say(r)
