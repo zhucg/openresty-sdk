@@ -62,6 +62,31 @@ make && make install
 
 编译后，将zlib.so复制到/opt/openresty/lualib/
 
+
+在openresty实现bit操作
+
+http://bitop.luajit.org/
+http://bitop.luajit.org/api.html
+
+wget http://bitop.luajit.org/download/LuaBitOp-1.0.2.zip
+
+下载完成后，修改MakeFile文件
+将
+INCLUDES= -I/usr/local/include
+修改为
+INCLUDES= -I/opt/openresty/luajit/include/luajit-2.1/
+
+然后
+make
+编译完成后将bit.so拷贝到你的lualib目录
+
+说明：
+
+bitop应该是个c扩展模块，需要编译安装
+安装需要lua.h文件，我们使用的是openresty，默认安装的是luajit，所以需要修改MakeFile文件中的包含路径
+
+
+
 local zlib = require "zlib"
 local test_string = 'abcdefg'
 local deflated = zlib.deflate()(test_string, "finish")
